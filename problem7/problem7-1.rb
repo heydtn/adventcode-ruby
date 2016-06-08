@@ -15,15 +15,23 @@ def parse4(ops, vals)
   end
 end
 
+def checkForInteger(val)
+  if val[1] != nil then
+    return Integer(val[1])
+  else
+    return val[2]
+  end
+end
+
 File.open("problem7.input") do |file|
   file.each_line do |line|
     vals = line.scan(/([A-Z]+)|(\d+)|([a-z]+)/)
     case vals.length
     when 2 # Static assign
-      conv = Integer(vals[0][1]) rescue conv = vals[0][2]
+      conv = checkForInteger(vals[0])
       ops.store(vals[1][2], Op.new("ASSIGN", vals[1][2], conv))
     when 3 # NOT operation
-      conv = Integer(vals[1][1]) rescue conv = vals[1][2]
+      conv = checkForInteger(vals[1])
       ops.store(vals[2][2], Op.new(vals[0][0], vals[2][2], conv))
     when 4
       parse4(ops, vals)
@@ -39,6 +47,7 @@ def evaluateData(ops, start)
     return $result[start.dest]
   end
 
+  # TODO:  Find better way to check for integers than using exceptions
   arg1 = Integer(start.arg1) rescue arg1 = ops[start.arg1]
   arg2 = Integer(start.arg2) rescue arg2 = ops[start.arg2]
   case start.opcode
