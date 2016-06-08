@@ -3,7 +3,7 @@ total2 = 0
 total3 = 0
 
 File.open("problem8.input") do |file|
-	file.each_line do |line|
+  file.each_line do |line|
     line = line.strip
     total1 += line.length
     total2 += line.gsub(/(\\[^x])|(\\x[a-fA-F0-9]{1,2})/,".").gsub(/(^")|("$)/,"").length

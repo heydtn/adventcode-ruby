@@ -4,7 +4,7 @@ total = 0
 total2 = 0
 
 File.open("problem5.input") do |file|
-	file.each_line do |line|
+  file.each_line do |line|
     if (reg.match(line) != nil) then
       total += 1
     end

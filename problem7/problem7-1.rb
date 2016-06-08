@@ -16,7 +16,7 @@ def parse4(ops, vals)
 end
 
 File.open("problem7.input") do |file|
-	file.each_line do |line|
+  file.each_line do |line|
     vals = line.scan(/([A-Z]+)|(\d+)|([a-z]+)/)
     case vals.length
     when 2 # Static assign

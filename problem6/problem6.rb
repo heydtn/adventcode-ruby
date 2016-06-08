@@ -36,7 +36,7 @@ end
 
 linenum = 0
 File.open("problem6.input") do |file|
-	file.each_line do |line|
+  file.each_line do |line|
     if linenum % 30 == 0 then
       puts linenum
     end
