@@ -1,5 +1,3 @@
-require 'set'
-
 Op = Struct.new(:opcode, :dest, :arg1, :arg2)
 ops = {}
 $result = {}
